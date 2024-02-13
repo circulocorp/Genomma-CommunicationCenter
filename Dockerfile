@@ -4,6 +4,7 @@ WORKDIR /genommaCommunicationCenter
 
 COPY requirements.txt /genommaCommunicationCenter/
 RUN pip install --no-cache-dir -r requirements.txt
+ENV ENVIRONMENT development
 
 COPY . /genommaCommunicationCenter/
 
