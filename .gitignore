@@ -1,0 +1,14 @@
+*.pyc
+__pycache__/
+*.swp
+.DS_Store
+
+.env.*
+
+settings/local_settings.py
+
+logs/
+
+*.sqlite3
+
+venv/
