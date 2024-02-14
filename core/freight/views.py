@@ -63,7 +63,7 @@ class FreightApiView(APIView):
     
     def put(self, request, format=None):
         freight_data = json.loads(request.body)
-        freight_instance = Freight.objects.get(transaction_id=freight_data['transaction_id'])
+        freight_instance = Freight.objects.get(freight_order=freight_data['freight_order'])
         freight_serializer = FreightSerializer(freight_instance, data=freight_data)
 
         if freight_serializer.is_valid():

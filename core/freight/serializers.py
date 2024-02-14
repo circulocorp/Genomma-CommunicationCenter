@@ -26,7 +26,7 @@ class FreightSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Freight
-        fields = ['uuid', 'transaction_id', 'freight_order', 'status', 'planned_km', 'planned_time', 'vehicle_resource', 'plate_number', 'carrier', 'driver', 'stages', 'events', 'transactions']
+        fields = ['uuid', 'freight_order', 'status', 'planned_km', 'planned_time', 'vehicle_resource', 'plate_number', 'carrier', 'driver', 'stages', 'events', 'transactions']
 
     def create(self, validated_data):
         stages_data = validated_data.pop('stages')
@@ -46,7 +46,6 @@ class FreightSerializer(serializers.ModelSerializer):
         stages_data = validated_data.pop('stages')
         events_data = validated_data.pop('events')
 
-        instance.transaction_id = validated_data.get('transaction_id', instance.transaction_id)
         instance.freight_order = validated_data.get('freight_order', instance.freight_order)
         instance.status = validated_data.get('status', instance.status)
         instance.planned_km = validated_data.get('planned_km', instance.planned_km)

@@ -19,7 +19,6 @@ PROCESS_STATUS = (
 
 class Freight(models.Model):
     uuid = models.UUIDField(_('Uuid'),primary_key=True, editable=False, default=uuid.uuid4, unique=True, blank=False, null=False)
-    transaction_id = models.CharField(_('Transaction id'), max_length=50, blank=False, null=False, unique=True)
     freight_order = models.CharField(_('Freight order'), max_length=50, blank=False, null=False, unique=True)
     status = models.CharField(_('Status'), max_length=50, choices=FREIGHT_STATUS, default=FreightStatus.ACTIVE, blank=False, null=False)
     planned_km = models.FloatField(_('Planned km'), blank=False, null=False)
