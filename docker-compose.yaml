@@ -9,7 +9,6 @@ services:
       - rabbitmq-consumer
     environment:
       - ENVIRONMENT=development
-      - DJANGO_SECRET_KEY=django-insecure-5b_r2sgn*xh9@fz55$=%v4j=2!3h68qqn4y%n7z*l)*q07s(j7
       - DJANGO_DEBUG=False
       - DJANGO_ALLOWED_HOSTS=34.197.6.32
       - DATABASE_NAME=genomma_communication_center_prod
