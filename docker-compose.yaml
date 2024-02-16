@@ -12,7 +12,7 @@ services:
 
   rabbitmq-consumer:
     build: .
-    command: python consumer.py  
+    command: python ./rabbit/consumer.py  
     environment:
       - RABBIT_MQ_DEFAULT_QUEUE=genomma_communication_center_exchange
     networks:
