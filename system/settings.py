@@ -129,3 +129,13 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+
+# RabbitMQ
+
+RABBIT_MQ_HOST = env('RABBIT_MQ_HOST', cast=str)
+
+RABBIT_MQ_DEFAULT_QUEUE = env('RABBIT_MQ_DEFAULT_QUEUE', cast=str)
+
+RABBIT_MQ_USERNAME = env('RABBIT_MQ_USERNAME', cast=str)
+
+RABBIT_MQ_PASSWORD = env('RABBIT_MQ_PASSWORD', cast=str)

@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  django:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - rabbitmq-consumer
+    environment:
+      - ENVIRONMENT=development
+      - DJANGO_SECRET_KEY=django-insecure-5b_r2sgn*xh9@fz55$=%v4j=2!3h68qqn4y%n7z*l)*q07s(j7
+      - DJANGO_DEBUG=False
+      - DJANGO_ALLOWED_HOSTS=34.197.6.32
+      - DATABASE_NAME=genomma_communication_center_prod
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=HackMe!2019$
+      - DATABASE_HOST=circulocorp.c1rv3iuqyhko.us-east-1.rds.amazonaws.com
+      - DATABASE_PORT=5432
+
+  rabbitmq-consumer:
+    build: .
+    command: python consumer.py  
+    environment:
+      - RABBIT_MQ_USERNAME=lmjbfdtx
+      - RABBIT_MQ_PASSWORD=2a3Frq3_2y_EGSs_QaIkRLG_TYtTzzuV
+      - RABBIT_MQ_HOST=fish-01.rmq.cloudamqp.com
+      - RABBIT_MQ_DEFAULT_QUEUE=genomma_communication_center_exchange
+    networks:
+      - default
+    restart: unless-stopped
+
+networks:
+  default:

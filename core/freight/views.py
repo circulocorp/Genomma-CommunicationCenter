@@ -5,6 +5,8 @@ from core.freight.serializers import FreightSerializer
 from rest_framework.pagination import PageNumberPagination
 from core.freight.models import Freight
 from core.freight.catalog import FreightStatus
+from rabbit.rabbit_configuration import RabbitMQConfiguration
+from django.core.serializers.json import DjangoJSONEncoder
 import json
 
 
@@ -24,6 +26,14 @@ class FreightApiView(APIView):
 
         if freight_serializer.is_valid():
             freight_instance = freight_serializer.save()
+
+            freight_serializer.data['uuid'] = str(freight_instance.uuid)
+            # Send message to RabbitMQ
+            print('Sending message to RabbitMQ')
+            rabbitmq_config = RabbitMQConfiguration()
+            rabbitmq_config.send_message(json.dumps(freight_data, cls=DjangoJSONEncoder))
+            rabbitmq_config.close_connection()
+
             return Response(data={
                 'content': freight_serializer.data,
                 'message': 'Freight created successfully',
