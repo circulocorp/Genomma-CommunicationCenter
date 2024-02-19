@@ -16,7 +16,7 @@ class FreightTransactionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FreightTransaction
-        fields = ('__all__')
+        fields = ['id', 'process_status_display']
 
 
 class FreightSerializer(serializers.ModelSerializer):

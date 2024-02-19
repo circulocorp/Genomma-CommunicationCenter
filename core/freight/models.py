@@ -126,7 +126,7 @@ class Event(models.Model):
         return self.planned_hour
     
 class FreightTransaction(models.Model):
-    uuid = models.UUIDField(_('Uuid'),primary_key=True, editable=False, default=uuid.uuid4, unique=True, blank=False, null=False)
+    id = models.AutoField(primary_key=True, editable=False, unique=True, blank=False, null=False)
     freight = models.ForeignKey(Freight, on_delete=models.CASCADE, related_name='transactions')
     process_status = models.IntegerField(_('Process status'), choices=PROCESS_STATUS, default=0, blank=False, null=False)
     mzone_code = models.CharField(_('Mzone code'), max_length=50, blank=True, null=True)
