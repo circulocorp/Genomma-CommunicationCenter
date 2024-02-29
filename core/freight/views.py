@@ -35,7 +35,7 @@ class FreightApiView(APIView):
             rabbitmq_config.close_connection()
 
             return Response(data={
-                'content': freight_serializer.data,
+                'transactions': freight_serializer.data.get('transactions', []),
                 'message': 'Freight created successfully',
                 'status': 'success',
                 'code': 201
