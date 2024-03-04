@@ -17,7 +17,7 @@ class FreightPagination(PageNumberPagination):
 
 
 class FreightApiView(APIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     pagination_class = FreightPagination
 
     def post(self, request, format=None):
